@@ -12,6 +12,7 @@ import time
 import asyncio
 import re
 from functools import wraps
+from webserver import keep_alive
 
 # Get owner ID from environment variable
 OWNER_ID = os.getenv('OWNER_ID')
@@ -867,5 +868,6 @@ async def handle_callback(client, callback_query):
         print(error_msg)
         await callback_query.answer(error_msg[:200], show_alert=True)
 
+keep_alive()
 if __name__ == "__main__":
     app.run()
